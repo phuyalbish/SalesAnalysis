@@ -299,6 +299,20 @@ kbd kbd {
   font-size: 1em;
 }
 
+ fieldset {
+      border: 2px solid #333;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    legend {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #333;
+    }
+
+
 figure {
   margin: 0 0 1rem;
 }
@@ -10832,3 +10846,5 @@ textarea.form-control-lg {
   width: 4rem;
   font-size: 2rem;
 }
+
+

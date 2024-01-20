@@ -7,7 +7,7 @@ class Client(models.Model):
     email = models.EmailField(unique=True, null=False)
     location = models.CharField(max_length=255)
     description = models.TextField()
-    img = models.ImageField(upload_to='images/profile_picture/CustomerProfilePic/', null=True, blank=True)
+    img = models.ImageField(upload_to='images/CustomerProfilePic/', null=True, blank=True)
     password = models.CharField(max_length=255)
 
 
