@@ -6,9 +6,9 @@ from django.contrib import messages
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.urls import reverse
-from .models import Client, Company, Product
+from .models import Client, Company, Product, Sales
 
-from .forms import CompanyForm, ProductForm, SalesForm
+from .forms import CompanyForm, ProductForm, SalesForm, ClientForm
 # from SalesAnalysis.myapp.forms import SignUpForm
 from .forms import SignUpForm
 
@@ -16,13 +16,19 @@ def home_index(request):
     return render(request,'myapp/index.html')
 
 def dashboard_view(request):
-    return render(request,'myapp/dashboard/dashboard.html')
+    sales = Sales.objects.all()
+    products = Product.objects.all()
+    return render(request,'myapp/dashboard/dashboard.html',  {'sales': sales, 'products': products})
 
 def charts_view(request):
     return render(request,'myapp/dashboard/charts.html')
 
 def tables_view(request):
-    return render(request,'myapp/dashboard/tables.html')
+
+    sales = Sales.objects.all()
+    products = Product.objects.all()
+    
+    return render(request,'myapp/dashboard/tables.html', {'sales': sales, 'products': products})
 
 def insert(request):
     companies = Company.objects.all()
@@ -74,9 +80,30 @@ def create_product(request):
     return redirect('myapp:insert')
 
 
+# def create_client(request):
+#     if request.method == 'POST':
+#         form = ClientForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             client_name = form.cleaned_data['name']  # Assuming the foreign key is named 'company'
+
+#             # Check if a product with the same name already exists for the same company
+#             existing_client = Product.objects.filter(name=client_name).exists()
+
+#             if not existing_client:
+#                 form.save()
+#                 messages.success(request, "Client inserted successfully!")
+#                 return redirect('myapp:insert')  # Redirect to the product list view
+#             else:
+#                 messages.error(request, "Product with this name already exists for the selected company.")
+#     else:
+#         form = ClientForm()
+
+#     return redirect('myapp:insert')
+
 def create_sales(request):
     if request.method == 'POST':
         form = SalesForm(request.POST, request.FILES)
+        form2 = SalesForm(request.POST)
         if form.is_valid():
                 form.save()
                 messages.success(request, "Sales inserted successfully!")

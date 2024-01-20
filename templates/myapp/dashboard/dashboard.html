@@ -33,44 +33,58 @@
                     </div>
                 </div>
             </div>
-            <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
-                   Sales List:
-                </div>
-                <div class="card-body">
-                    <table id="datatablesSimple">
-                        <thead>
-                            <tr>
-                                <th>Product Name</th>
-                                <th>Date</th>
-                                <th>Amount</th>
-                                <th>Total Price</th>
-                                <th>Indivisual Buying</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-
-                                <th>Product Name</th>
-                                <th>Date</th>
-                                <th>Amount</th>
-                                <th>Total Price</th>
-                                <th>Indivisual Buying</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <br><br><hr><br>
+                                    <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                              Sales
+                            </div>
+                            <div class="card-body">
+                              <table id="datatablesSimple" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Amount</th>
+                                            <th>Total Price</th>
+                                            <th>Is Individual</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Amount</th>
+                                            <th>Total Price</th>
+                                            <th>Is Individual</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        {% for sale in sales %}
+                                            <tr><td>
+                                                    {% if sale.p_id %}
+                                                        {{ sale.p_id.name }}
+                                                    {% else %}
+                                                        No Product
+                                                    {% endif %}
+                                                </td>
+                                                <td>{{ sale.amount }}</td>
+                                                <td>{{ sale.totalprice }}</td>
+                                                <td>{{ sale.is_indivisual }}</td>
+                                                <td>{{ sale.date }}</td>
+                                               
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
         </div>
     </main>
     <footer class="py-4 bg-light mt-auto">
         <div class="container-fluid px-4">
             <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                <div class="text-muted">Copyright &copy; XData 2024</div>
                 <div>
                     <a href="#">Privacy Policy</a>
                     &middot;

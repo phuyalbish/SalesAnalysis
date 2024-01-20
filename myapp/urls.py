@@ -19,5 +19,8 @@ urlpatterns = [
     path('create_company/', views.create_company, name='create_company'),
 
     path('create_product/', views.create_product, name='create_product'),
+    
     path('create_sales/', views.create_sales, name='create_sales'),
+
+    # path('create_stores/', views.create_stores, name='create_stores'),
 ]

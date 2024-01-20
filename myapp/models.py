@@ -35,7 +35,7 @@ class Sales(models.Model):
     totalprice = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     is_indivisual = models.BooleanField(default=True)
     p_id = models.ForeignKey(Product, on_delete=models.CASCADE)
-
+    
 
 class Client_Sales_Bridge(models.Model):
     id = models.AutoField(primary_key=True)
