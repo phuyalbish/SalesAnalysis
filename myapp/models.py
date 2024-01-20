@@ -4,6 +4,7 @@ from django.db import models
 class Client(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
+    email = models.EmailField(unique=True, null=False)
     location = models.CharField(max_length=255)
     description = models.TextField()
     img = models.ImageField(upload_to='images/profile_picture/CustomerProfilePic/', null=True, blank=True)
